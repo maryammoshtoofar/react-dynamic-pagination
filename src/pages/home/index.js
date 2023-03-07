@@ -10,9 +10,6 @@ const Home = () => {
   const productsCount = useSelector((state) => state.products.productsCount);
   const dispatch = useDispatch();
   useEffect(() => {
-    searchParams.set("_page", "1");
-  },[]);
-  useEffect(() => {
     dispatch(fetchProducts(searchParams));
   }, [dispatch, productsCount, searchParams]);
 
