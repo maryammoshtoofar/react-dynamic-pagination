@@ -5,13 +5,21 @@ import { fetchProducts } from "../../redux/features/product/product-slice";
 import { useSearchParams } from "react-router-dom";
 
 const Home = () => {
-  const [searchParams] = useSearchParams("_page=1&_limit=5");
+  const [searchParams, setSearchParams] = useSearchParams("");
   const products = useSelector((state) => state.products.data);
   const productsCount = useSelector((state) => state.products.productsCount);
+  const params = useSelector((state) => state.products.params);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setSearchParams(params);
+  }, []);
+
+  
   useEffect(() => {
     dispatch(fetchProducts(searchParams));
-  }, [dispatch, productsCount, searchParams]);
+  }, [dispatch, productsCount]);
 
   return (
     <>

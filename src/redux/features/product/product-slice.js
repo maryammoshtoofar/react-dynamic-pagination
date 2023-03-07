@@ -4,6 +4,7 @@ import { PagedProductReq } from "../../../api/products";
 const initialState = {
   data: [],
   productsCount: 0,
+  params: "_page=1&_limit=5",
   loading: false,
   error: "",
 };
@@ -20,13 +21,13 @@ export const productsSlice = createSlice({
   extraReducers: (builder) => {
     // read
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      const { products, count, queryParams } = action.payload;
+      const { products, count, params } = action.payload;
       return {
         ...state,
         loading: false,
         data: products,
         productsCount: count,
-        queryParams: queryParams,
+        params: params,
       };
     });
   },

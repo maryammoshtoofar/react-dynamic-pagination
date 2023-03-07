@@ -8,15 +8,20 @@ const BSPagination = ({ count, params }) => {
   const dispatch = useDispatch();
 
   const changePage = (e) => {
-    const pageNum = e.target.innerHTML;
-    setActive(pageNum);
-    dispatch(fetchProducts(`_page=${pageNum}&_limit=5`));
+    // if this is the active page do nothing
+    if (e.target.tagName === "SPAN") return;
+
+    // if the target is a pageButton
+    if (e.target.className == "page-link") {
+      const pageNum = e.target.innerHTML;
+      setActive(pageNum);
+      dispatch(fetchProducts(`_page=${pageNum}&_limit=5`));
+    }
   };
 
   useEffect(() => {
     setActive(params.get("_page"));
   }, []);
-
 
   let items = [];
 
