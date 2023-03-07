@@ -15,11 +15,8 @@ const BSPagination = ({ count, params }) => {
 
   useEffect(() => {
     setActive(params.get("_page"));
-    console.log(active);
   }, []);
-  useEffect(() => {
-    console.log(active);
-  }, [active]);
+
 
   let items = [];
 
