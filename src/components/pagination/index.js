@@ -3,8 +3,7 @@ import Pagination from "react-bootstrap/Pagination";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "../../redux/features/product/product-slice";
 
-const BSPagination = ({ count, params }) => {
-  const [active, setActive] = useState(1);
+const BSPagination = ({ count, params, active, setActive }) => {
   const dispatch = useDispatch();
 
   const changePage = (e) => {
@@ -20,7 +19,7 @@ const BSPagination = ({ count, params }) => {
   };
 
   useEffect(() => {
-    setActive(params.get("_page"));
+    setActive("1");
   }, []);
 
   let items = [];

@@ -4,7 +4,6 @@ import { PagedProductReq } from "../../../api/products";
 const initialState = {
   data: [],
   productsCount: 0,
-  params: "_page=1&_limit=5",
   loading: false,
   error: "",
 };
@@ -17,7 +16,9 @@ export const fetchProducts = createAsyncThunk(
 export const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+
+  },
   extraReducers: (builder) => {
     // read
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
@@ -34,3 +35,4 @@ export const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
+

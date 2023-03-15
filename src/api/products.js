@@ -1,10 +1,10 @@
-import axios from "axios";
-const BASE_URL = "http://localhost:3002";
+import axios from "./http";
+
 export const PagedProductReq = async (params) => {
   let count;
   try {
-    const response = await axios.get(`${BASE_URL}/products?${params}`);
-    const countRes = await axios.get(`${BASE_URL}/products`);
+    const response = await axios.get(`/products?${params}`);
+    const countRes = await axios.get(`/products`);
     const allData = await countRes.data;
     count = await allData.length;
     return {
