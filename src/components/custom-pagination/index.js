@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "../../redux/features/product/product-slice";
 import "./style.css";
@@ -42,14 +42,18 @@ const CustomPagination = ({ count, params, active, setActive }) => {
   };
 
   useEffect(() => {
-    setActive("1");
+    setActive(params.get("_page"));
   }, []);
 
   let items = [];
 
   for (let number = 1; number <= count / params.get("_limit"); number++) {
     items.push(
-      <li style={active == number ? activeStyles : styles} key={number}>
+      <li
+        style={active == number ? activeStyles : styles}
+        key={number}
+        onClick={changePage}
+      >
         {number}
       </li>
     );

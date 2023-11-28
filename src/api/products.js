@@ -6,6 +6,7 @@ export const PagedProductReq = async (params) => {
     const response = await axios.get(`/products?${params}`);
     const countRes = await axios.get(`/products`);
     const allData = await countRes.data;
+    console.log(response.data);
     count = await allData.length;
     return {
       products: response.data,

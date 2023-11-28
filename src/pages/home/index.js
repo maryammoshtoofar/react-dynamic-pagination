@@ -18,25 +18,22 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchProducts(searchParams));
   }, []);
-
+  const props = {
+    count: productsCount,
+    params: searchParams,
+    active,
+    setActive,
+    setSearchParams,
+  };
   return (
     <>
       <p className="bg-primary text-light">Products With Pagination</p>
       {products.map((product) => (
         <p key={product.id}>{product.name}</p>
       ))}
-      <BSPagination
-        count={productsCount}
-        params={searchParams}
-        active={active}
-        setActive={setActive}
-      />
-      <CustomPagination
-        params={searchParams}
-        count={productsCount}
-        active={active}
-        setActive={setActive}
-      />
+
+      <BSPagination {...props} />
+      <CustomPagination {...props} />
     </>
   );
 };
